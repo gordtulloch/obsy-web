@@ -1,0 +1,58 @@
+Development on bare Ubuntu desktop 22.04 minimal install 
+
+login: obsy
+password: obsy
+
+sudo su
+apt update
+apt install software-properties-common
+
+apt install git apache2 mysql-server php libapache2-mod-php php-mysql
+
+ufw allow in "Apache"
+mysql_secure_installation
+
+curl -sS https://getcomposer.org/installer | php 
+mv composer.phar /usr/local/bin/composer 
+chmod +x /usr/local/bin/composer 
+
+
+cd /var/www 
+git clone https://github.com/gordtulloch/obsy-web.git
+
+git clone https://github.com/laravel/laravel.git 
+chown -R www-data.www-data /var/www/laravel 
+chmod -R 755 /var/www/laravel 
+chmod -R 777 /var/www/laravel/storage
+
+cp -R ./laravel/* ./obsy-web
+cd ./obsy-web
+mv .env.example .env
+php artisan key:generate
+nano .env
+mysql < install.sql
+
+install.sql:
+CREATE DATABASE obsy; 
+CREATE USER 'obsy'@'localhost' IDENTIFIED BY 'secret'; 
+GRANT ALL ON obsy.* to 'obsy'@'localhost'; 
+FLUSH PRIVILEGES; 
+quit 
+
+nano /etc/apache2/sites-enabled/avalable.conf 
+<VirtualHost *:80>  
+ServerAdmin obsy@localhost 
+DocumentRoot /var/www/laravel/public  
+<Directory /> 
+Options FollowSymLinks AllowOverride None 
+</Directory> 
+<Directory /var/www/laravel> 
+AllowOverride All 
+</Directory>  
+ErrorLog ${APACHE_LOG_DIR}/error.log 
+CustomLog ${APACHE_LOG_DIR}/access.log combined  
+</VirtualHost> 
+
+sudo systemctl restart apache2
+
+
