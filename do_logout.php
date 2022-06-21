@@ -1,18 +1,19 @@
 <?php
 //This page let log in
 include('config.php');
-include('header.php');
+
 if (isset($_SESSION['username'])) {
     unset($_SESSION['username'], $_SESSION['userid']);
     setcookie('username', '', time() - 100);
     setcookie('password', '', time() - 100);
     setcookie('currsecurity', '', time() - 100);
     setcookie('tzone', '', time() - 100);
-    
+    include('header.php');
     ?>
 
-<div class="message">You have successfully been logged out.<br /></div>
+include('header.php');
 
-<?php
+
+    <?php
 }
 include('footer.php');

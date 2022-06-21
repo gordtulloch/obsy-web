@@ -7,7 +7,7 @@
 }
 body
 {
-	background:#34282C ;
+	background:#383838 ;
 	padding-left:10%;
 	padding-right:10%;
 	font-family:Arial, Geneva, sans-serif;
@@ -49,17 +49,8 @@ h1
 {
 	text-align:center;
 }
-input[type=text], input[type=submit], input[type=button], input[type=password]
-{
-	width:150px;
-}
-label
-{
-	width:200px;
-	display:inline-block;
-	vertical-align:top;
-	text-align:left;
-}
+
+
 .message_buttons input
 {
 	width:auto;
@@ -84,16 +75,16 @@ table
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
 	border-radius:10px;
-	padding:0px;
+	padding:10px;
 	width:95%;
-	margin:5px auto 5px auto;
+	margin:15px auto 15px auto;
 }
 tr
 {
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 	border-radius:5px;
-	margin:0px;
+	margin:15px;
 }
 td, th
 {
@@ -109,7 +100,7 @@ td, th
 	margin:auto;
 	margin-top:10px;
 	padding:15px;
-	background:#77addd;
+	background:#787878;
 	width:30%;
 	-moz-border-radius:20px;
 	-webkit-border-radius:20px;
@@ -119,7 +110,7 @@ td, th
 .foot
 {
 	text-align:center;
-	background:#77addd;
+	background:#787878;
 	width:99%;
 	-moz-border-radius:15px;
 	-webkit-border-radius:15px;
@@ -129,7 +120,7 @@ td, th
 }
 .content
 {
-	background:#77addd;
+	background:#787878;
 	width:97%;
 	-moz-border-radius:20px;
 	-webkit-border-radius:20px;
@@ -148,7 +139,7 @@ td, th
 }
 .box
 {
-	background:#FFFFFF;
+	background:#787878;
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
 	border-radius:10px;
@@ -158,11 +149,11 @@ td, th
 }
 .box_splash
 {
-	background:url('images/black_40p.png');
+	background: #787878;
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
 	border-radius:10px;
-	margin:100px;
+	margin:10px;
 	padding:5px;
 	margin-bottom:15px;
 }
@@ -208,56 +199,8 @@ td, th
 	font-weight:bold;
 	margin-top:20px;
 }
-.messages_table td
-{
-	border-top:1px solid #cccccc;
-	vertical-align:top;
-}
-.author
-{
-	width:150px;
-	border-right:1px solid #cccccc;
-}
-.title_cell
-{
-	width:45%;
-}
-.date
-{
-	font-style:italic;
-	text-align:right;
-	font-size:0.9em;
-	margin-right:10px;
-}
-.edit
-{
-	float:left;
-}
-.forum_ntop, .forum_nrep, .forum_act, .forum_auth
-{
-	width:100px;
-}
-td.forum_cat, td.forum_tops
-{
-	padding-left:15px;
-	text-align:left;
-}
-.categories_table td, .categories_table th, .topics_table td, .topics_table th, .list_pm td, .list_pm th
-{
-	border-bottom:1px solid #cccccc;
-}
-.categories_table tr:last-child td, .topics_table tr:last-child td, .list_pm tr:last-child td
-{
-	border-bottom:0px;
-}
-td.forum_cat .title
-{
-	font-weight:bold;
-}
-td.forum_cat .description
-{
-	padding-left:5px;
-}
+
+
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 #cssmenu,
@@ -293,12 +236,12 @@ td.forum_cat .description
   border-radius: 5px;
   font-family: 'Open Sans', Helvetica, sans-serif;
   background: #77addd;
-  background: -o-linear-gradient(top, #a0c6e7, #5699d5);
-  background: -ms-linear-gradient(top, #a0c6e7, #5699d5);
-  background: -webkit-linear-gradient(top, #a0c6e7, #5699d5);
-  background: -moz-linear-gradient(top, #a0c6e7, #5699d5);
-  background: linear-gradient(to bottom, #a0c6e7, #5699d5);
-  box-shadow: inset 0 -3px 0 #4a92d2, inset 0 -3px 3px #4e94d3, inset 0 2px 2px #cde1f2, inset 1px 0 2px #5a9cd6, inset -1px 0 2px #5a9cd6, 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.06), 0 3px 3px rgba(0, 0, 0, 0.17), 2px 1px 2px rgba(0, 0, 0, 0.05), -2px 1px 2px rgba(0, 0, 0, 0.05);
+  background: -o-linear-gradient(top, #787878, #303030);
+  background: -ms-linear-gradient(top, #787878, #303030);
+  background: -webkit-linear-gradient(top, #787878, #303030);
+  background: -moz-linear-gradient(top, #787878, #303030);
+  background: linear-gradient(to bottom, #787878, #303030);
+  #box-shadow: inset 0 -3px 0 #4a92d2, inset 0 -3px 3px #4e94d3, inset 0 2px 2px #cde1f2, inset 1px 0 2px #5a9cd6, inset -1px 0 2px #5a9cd6, 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.06), 0 3px 3px rgba(0, 0, 0, 0.17), 2px 1px 2px rgba(0, 0, 0, 0.05), -2px 1px 2px rgba(0, 0, 0, 0.05);
 }
 #cssmenu.align-center > ul {
   font-size: 0;
@@ -353,11 +296,11 @@ td.forum_cat .description
   height: 18px;
   border-radius: 9px;
   background: #77addd;
-  background: -webkit-linear-gradient(top, #8fbce3 0%, #83b4e0 25%, #67a3d9 50%, #8fbce3 75%, #83b4e0 100%);
-  background: -ms-linear-gradient(top, #8fbce3 0%, #83b4e0 25%, #67a3d9 50%, #8fbce3 75%, #83b4e0 100%);
-  background: -moz-linear-gradient(top, #8fbce3 0%, #83b4e0 25%, #67a3d9 50%, #8fbce3 75%, #83b4e0 100%);
-  background: -o-linear-gradient(top, #8fbce3 0%, #83b4e0 25%, #67a3d9 50%, #8fbce3 75%, #83b4e0 100%);
-  background: linear-gradient(to bottom, #8fbce3 0%, #83b4e0 25%, #67a3d9 50%, #8fbce3 75%, #83b4e0 100%);
+  background: -webkit-linear-gradient(top, #787878 0%, #686868 25%, #585858 50%, #484848 75%, #303030 100%);
+  background: -ms-linear-gradient(top, #787878 0%, #686868 25%, #585858 50%, #484848 75%, #303030 100%);
+  background: -moz-linear-gradient(top, #787878 0%, #686868 25%, #585858 50%, #484848 75%, #303030 100%);
+  background: -o-linear-gradient(top, #787878 0%, #686868 25%, #585858 50%, #484848 75%, #303030 100%);
+  background: linear-gradient(to bottom, #787878 0%, #686868 25%, #585858 50%, #484848 75%, #303030 100%);
   box-shadow: inset 0 -1px 1px #5297d4, inset 0 2px 1px #b4d2ec;
   background-size: 36px 36px;
   background-position: 0 0;
@@ -434,7 +377,7 @@ td.forum_cat .description
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
   color: #ffffff;
   text-decoration: none;
-  background: #073763;
+  background: #787878;
   -webkit-transition: color .2s ease;
   -moz-transition: color .2s ease;
   -ms-transition: color .2s ease;
@@ -460,11 +403,11 @@ td.forum_cat .description
   right: 12px;
   top: 9.5px;
   background: #073763;
-  background: -webkit-linear-gradient(top, #094780 0%, #083f71 25%, #062c50 50%, #094780 75%, #083f71 100%);
-  background: -ms-linear-gradient(top, #094780 0%, #083f71 25%, #062c50 50%, #094780 75%, #083f71 100%);
-  background: -moz-linear-gradient(top, #094780 0%, #083f71 25%, #062c50 50%, #094780 75%, #083f71 100%);
-  background: -o-linear-gradient(top, #094780 0%, #083f71 25%, #062c50 50%, #094780 75%, #083f71 100%);
-  background: linear-gradient(to bottom, #094780 0%, #083f71 25%, #062c50 50%, #094780 75%, #083f71 100%);
+  background: -webkit-linear-gradient(top, #ff0000 0%, #ff5252 25%, #ff7b7b 50%, #ffa4a4 75%, #fff6f6 100%);
+  background: -ms-linear-gradient(top, #ff0000 0%, #ff5252 25%, #ff7b7b 50%, #ffa4a4 75%, #fff6f6 100%);
+  background: -moz-linear-gradient(top, #ff0000 0%, #ff5252 25%, #ff7b7b 50%, #ffa4a4 75%, #fff6f6 100%);
+  background: -o-linear-gradient(top, #ff0000 0%, #ff5252 25%, #ff7b7b 50%, #ffa4a4 75%, #fff6f6 100%);
+  background: linear-gradient(to bottom, #ff0000 0%, #ff5252 25%, #ff7b7b 50%, #ffa4a4 75%, #fff6f6 100%);
   box-shadow: inset 0 -1px 1px #041f38, inset 0 2px 1px #0c5faa;
   background-size: 36px 36px;
   background-position: 0 0;
@@ -593,11 +536,11 @@ td.forum_cat .description
   height: 28px;
   border-radius: 15px;
   background: #77addd;
-  background: -webkit-linear-gradient(top, #8fbce3 0%, #83b4e0 25%, #67a3d9 50%, #8fbce3 75%, #83b4e0 100%);
-  background: -ms-linear-gradient(top, #8fbce3 0%, #83b4e0 25%, #67a3d9 50%, #8fbce3 75%, #83b4e0 100%);
-  background: -moz-linear-gradient(top, #8fbce3 0%, #83b4e0 25%, #67a3d9 50%, #8fbce3 75%, #83b4e0 100%);
-  background: -o-linear-gradient(top, #8fbce3 0%, #83b4e0 25%, #67a3d9 50%, #8fbce3 75%, #83b4e0 100%);
-  background: linear-gradient(to bottom, #8fbce3 0%, #83b4e0 25%, #67a3d9 50%, #8fbce3 75%, #83b4e0 100%);
+  background: -webkit-linear-gradient(top, #ff0000 0%, #ff5252 25%, #ff7b7b 50%, #ffa4a4 75%, #fff6f6 100%);
+  background: -ms-linear-gradient(top, #ff0000 0%, #ff5252 25%, #ff7b7b 50%, #ffa4a4 75%, #fff6f6 100%);
+  background: -moz-linear-gradient(top, #ff0000 0%, #ff5252 25%, #ff7b7b 50%, #ffa4a4 75%, #fff6f6 100%);
+  background: -o-linear-gradient(top, #ff0000 0%, #ff5252 25%, #ff7b7b 50%, #ffa4a4 75%, #fff6f6 100%);
+  background: linear-gradient(to bottom, #ff0000 0%, #ff5252 25%, #ff7b7b 50%, #ffa4a4 75%, #fff6f6 100%);
   box-shadow: inset 0 -1px 1px #5297d4, inset 0 2px 1px #b4d2ec;
   background-size: 56px 56px;
   background-position: 0 0;

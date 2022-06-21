@@ -1,27 +1,44 @@
 <?php
 include('config.php');
-include ('header.php');
 include_once 'dbi_connect.php';
-
-$debug = 1;
+include ('header.php');
 ?>
+<br>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
 
-<div class="box_splash">
-    
-    <?php
-    if ($_SESSION['username']) {
-        echo '<br><H1><font color="black">Welcome to OBSY Observatory Management System</H1>';
-        echo '<br><font color="black"><Center>Please select an option from the menu above.</center><BR>';
+        <?php
+        if ($_SESSION['username']) {
+            echo '<Center><h1>Welcome to OBSY Observatory Management System</h1>';
+            echo '<br><h2>Please select an option from the menu above.</h2></center>';
         } else {
-        echo '<br><H1><font color="black">Welcome to OBSY Observatory Management System</H1><BR>';
-        echo "<br><center><h3>OBSY is your one stop shop for managing one or more INDI connnected observatories!<br>";
-        echo "<br><i>Features include:</i><br><br>";
-        echo 'to come';
-        echo "<br>Sign up for access or login to your guild below.</center></h3><br><br><br>";
-            }
-    ?>
-</div>
-</div><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<?php
+            echo '<br><center>Welcome to OBSY Observatory Management System<BR>';
+            echo "<br>OBSY is your one stop shop for managing one or more INDI connnected observatories!<br></center>";
+            ?>
+        </div>
+    </div>
+    <div class='container'>
+        <form action="do_login.php" method="post">
+            <div class="form-group">
+                <label for="loginEmail">Email address</label>
+                <input type="email" class="form-control" name="username" id="username" aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Remember me</label>
+            </div>
+            <button type="submit" class="btn btn-secondary">Submit</button>
+        </form>
+
+    </div>
+    </div>
+
+    <?php
+}
 include ('footer.php');
 ?> 
