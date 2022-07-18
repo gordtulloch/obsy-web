@@ -1,28 +1,26 @@
 <?php
-/******************************************************
-------------------Required Configuration---------------
-Please edit the following variables so the forum can
-work correctly.
-******************************************************/  
+define("HOST", "localhost");        // The host you want to connect to.
+define("USER", "obsy");             // The database username. 
+define("PASSWORD", "obsy");         // The database password. 
+define("DATABASE", "obsy");         // The database name.
 
-include_once('dbi_connect.php');
+$debug=0;
 
-//Username of the Administrator
-$admin='gtulloch';
+$mysqli = new mysqli(HOST, USER, PASSWORD, DATABASE);
 
-/******************************************************
------------------Optional Configuration----------------
-******************************************************/
+if ($debug) {
+        echo "Connected to MySQL<br>";
+    }
 
-//Forum Home Page
-$url_home = 'index.php';
+if (mysqli_connect_errno()) {
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+} 
 
-//Design Name
-$design = 'default';  
+//mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
+$url_home='index.php';
 
-/******************************************************
-----------------------Initialization-------------------
-******************************************************/
-include('init.php');
+session_start();
 ?>
+
+

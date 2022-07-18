@@ -1,7 +1,10 @@
 <?php
-include('config.php');
-include_once 'dbi_connect.php';
 include ('header.php');
+
+$debug=0;
+if ($debug) {
+        var_dump($_SESSION);
+    }
 ?>
 <br>
 <div class="jumbotron jumbotron-fluid">
@@ -18,7 +21,7 @@ include ('header.php');
         </div>
     </div>
     <div class='container'>
-        <form action="do_login.php" method="post">
+        <form action="do_login.php" method="POST">
             <div class="form-group">
                 <label for="loginEmail">Email address</label>
                 <input type="email" class="form-control" name="username" id="username" aria-describedby="emailHelp" placeholder="Enter email">

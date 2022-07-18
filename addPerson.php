@@ -9,21 +9,21 @@ if (isset($_SESSION['username'])) {
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="perFirst">First Name</label>
-                    <input type="text" class="form-control" id="perFirst" placeholder="John">
+                    <input type="text" class="form-control" id="perFirst" name="perFirst" placeholder="John">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="perLast">Last Name</label>
-                    <input type="text" class="form-control" id="perLast" placeholder="Smith">
+                    <input type="text" class="form-control" id="perLast" name="perLast" placeholder="Smith">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="perCountry">Country</label>
-                    <input type="text" class="form-control" id="perCountry" placeholder="Canada">
+                    <input type="text" class="form-control" id="perCountry" name="perCountry" placeholder="Canada">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="perTZ">Time Zone</label>
-                    <input type="text" class="form-control" id="perTZ" placeholder="CST6CDT">
+                    <input type="text" class="form-control" id="perTZ" name="perTZ" placeholder="CST6CDT">
                 </div>
             </div>
             <div class="form-row">
