@@ -1,146 +1,160 @@
--- phpMyAdmin SQL Dump
--- version 5.1.1deb5ubuntu1
--- https://www.phpmyadmin.net/
---
--- Host: localhost:3306
--- Generation Time: Jun 28, 2022 at 03:40 PM
--- Server version: 8.0.29-0ubuntu0.22.04.2
--- PHP Version: 8.1.2
+-- MySQL Workbench Forward Engineering
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema obsy
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema obsy
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `obsy` DEFAULT CHARACTER SET utf8 ;
+-- -----------------------------------------------------
+-- Schema obsy
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema obsy
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `obsy` ;
+USE `obsy` ;
+
+-- -----------------------------------------------------
+-- Table `obsy`.`target`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `obsy`.`target` (
+  `idTarget` INT NOT NULL,
+  `primaryName` VARCHAR(255) NOT NULL,
+  `ra2000` FLOAT NOT NULL,
+  `dec2000` FLOAT NOT NULL,
+  `targetType` INT NOT NULL,
+  `cadence` INT NOT NULL DEFAULT 0 COMMENT 'How often should this object be observed?',
+  `lastObserved` DATETIME NOT NULL,
+  `instrumentId` INT NOT NULL,
+  `priority` INT NOT NULL DEFAULT 10,
+  `trackFlag` INT NOT NULL DEFAULT 1,
+  `focusFlag` INT NOT NULL DEFAULT 1,
+  `alignFlag` INT NOT NULL DEFAULT 1,
+  `guideFlag` INT NOT NULL DEFAULT 1,
+  `indiProfile` VARCHAR(45) NOT NULL DEFAULT 'Default',
+  `fitsFile` VARCHAR(255) NULL,
+  `rotation` FLOAT NOT NULL DEFAULT 0,
+  `sequenceFile` VARCHAR(255) NULL,
+  `jobStartupConditions` VARCHAR(255) NOT NULL,
+  `jobConstraints` VARCHAR(255) NOT NULL,
+  `jobCompletionConditions` VARCHAR(45) NOT NULL,
+  `abortedJobManagement` INT NOT NULL,
+  PRIMARY KEY (`idTarget`))
+ENGINE = InnoDB;
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+-- -----------------------------------------------------
+-- Table `obsy`.`targetType`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `obsy`.`targetType` (
+  `targetTypeId` INT NOT NULL,
+  `name` VARCHAR(45) NULL,
+  PRIMARY KEY (`idtargetType`))
+ENGINE = InnoDB;
 
---
--- Database: `obsy`
---
-CREATE DATABASE IF NOT EXISTS `obsy` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-USE `obsy`;
 
--- --------------------------------------------------------
+-- -----------------------------------------------------
+-- Table `obsy`.`targetQueue`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `obsy`.`targetQueue` (
+  `targetQueueId` INT NOT NULL,
+  `targetId` INT NULL,
+  `queueDate` DATETIME NOT NULL,
+  `targetDate` DATETIME NOT NULL,
+  `statusId` INT NOT NULL,
+  `totalCapturesReqd` INT NOT NULL DEFAULT 0,
+  `totalCapturesMade` VARCHAR(45) NOT NULL DEFAULT 0,
+  `altitudeStart` FLOAT NOT NULL DEFAULT 0.00,
+  `altitudeEnd` FLOAT NOT NULL DEFAULT 0.00,
+  `startTime` DATETIME NOT NULL,
+  `endTime` DATETIME NOT NULL,
+  `duration` FLOAT NOT NULL DEFAULT 0.00,
+  `leadTime` FLOAT NULL DEFAULT 0.00,
+  PRIMARY KEY (`targetQueueId`))
+ENGINE = InnoDB;
 
---
--- Table structure for table `instrument`
---
+USE `obsy` ;
 
-CREATE TABLE `instrument` (
-  `id` int NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `observatory` varchar(255) NOT NULL,
-  `type` varchar(255) NOT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `mission` varchar(255) DEFAULT NULL,
-  `defaultPerson` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- -----------------------------------------------------
+-- Table `obsy`.`instrument`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `obsy`.`instrument` (
+  `instrumentId` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) NOT NULL,
+  `observatoryId` VARCHAR(255) NOT NULL,
+  `type` VARCHAR(255) NOT NULL,
+  `description` VARCHAR(255) NULL DEFAULT NULL,
+  `mission` VARCHAR(255) NULL DEFAULT NULL,
+  `defaultPerson` INT NOT NULL,
+  PRIMARY KEY (`instrumentId`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 2
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
--- --------------------------------------------------------
 
---
--- Table structure for table `observatory`
---
+-- -----------------------------------------------------
+-- Table `obsy`.`observatory`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `obsy`.`observatory` (
+  `observatoryId` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) NOT NULL,
+  `location` VARCHAR(255) NOT NULL,
+  `country` VARCHAR(255) NOT NULL,
+  `tz` VARCHAR(255) NOT NULL,
+  `contact` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `latitude` FLOAT NOT NULL,
+  `longitude` FLOAT NOT NULL,
+  `defaultObs` VARCHAR(3) NOT NULL,
+  PRIMARY KEY (`observatoryId`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 2
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
-CREATE TABLE `observatory` (
-  `id` int NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `location` varchar(255) NOT NULL,
-  `country` varchar(255) NOT NULL,
-  `tz` varchar(255) NOT NULL,
-  `contact` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `latitude` float NOT NULL,
-  `longitude` float NOT NULL,
-  `defaultObs` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- --------------------------------------------------------
+-- -----------------------------------------------------
+-- Table `obsy`.`person`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `obsy`.`person` (
+  `personId` INT NOT NULL AUTO_INCREMENT,
+  `fname` VARCHAR(255) NOT NULL,
+  `lname` VARCHAR(255) NOT NULL,
+  `country` VARCHAR(255) NOT NULL,
+  `tz` VARCHAR(255) NOT NULL,
+  `defaultPerson` INT NOT NULL,
+  PRIMARY KEY (`personId`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 2
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
---
--- Table structure for table `person`
---
 
-CREATE TABLE `person` (
-  `id` int NOT NULL,
-  `fname` varchar(255) NOT NULL,
-  `lname` varchar(255) NOT NULL,
-  `country` varchar(255) NOT NULL,
-  `tz` varchar(255) NOT NULL,
-  `defaultPerson` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- -----------------------------------------------------
+-- Table `obsy`.`users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `obsy`.`users` (
+  `userId` BIGINT NOT NULL,
+  `username` VARCHAR(255) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `signup_date` INT NOT NULL,
+  `security_level` INT NOT NULL,
+  `tzone` VARCHAR(255) NOT NULL)
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8mb3;
 
--- --------------------------------------------------------
 
---
--- Table structure for table `users`
---
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
-CREATE TABLE `users` (
-  `id` bigint NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `signup_date` int NOT NULL,
-  `security_level` int NOT NULL,
-  `tzone` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `signup_date`, `security_level`, `tzone`) VALUES
-(1, 'gord.tulloch@gmail.com', '9231cac17f8018e10b02df69f4e09ab426a1e59e', 'gord.tulloch@gmail.com', 1655487073, 99, 'America/Chicago');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `instrument`
---
-ALTER TABLE `instrument`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `observatory`
---
-ALTER TABLE `observatory`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `person`
---
-ALTER TABLE `person`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `instrument`
---
-ALTER TABLE `instrument`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `observatory`
---
-ALTER TABLE `observatory`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `person`
---
-ALTER TABLE `person`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
